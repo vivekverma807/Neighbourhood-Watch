@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neighbourhood Security Network</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Neighbourhood Security Network</h1>
+            <button id="chat-button" onclick="window.location.href = 'chat.html';">Community Chat</button>
+            <button id="login-button" onclick="window.location.href = 'login.html';">Login</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="incident-report">
+            <h2>Report an Incident</h2>
+            <form id="incident-form" class="form-card">
+                <div class="form-group">
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" name="title" placeholder="Enter incident title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" placeholder="Enter incident details" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Location:</label>
+                    <input type="text" id="address" name="address" placeholder="Enter incident location" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Latitude, Longitude (optional):</label>
+                    <input type="text" id="location" name="location" placeholder="e.g., 51.505, -0.09">
+                </div>
+
+                <button type="submit" class="btn-primary">Submit</button>
+            </form>
+        </section>
+
+        <section class="map-section">
+            <h2>Community Incident Map</h2>
+            <div id="map"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Neighbourhood Security Network © 2025</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
