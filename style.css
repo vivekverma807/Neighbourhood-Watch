@@ -1,0 +1,183 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Dark Theme Colors */
+:root {
+    --primary-color: #00c8ff;
+    --secondary-color: #0088cc;
+    --background-color: #121212;
+    --card-background: #1e1e1e;
+    --text-color: #ffffff;
+    --input-background: #252525;
+    --border-color: #333;
+}
+
+/* Body */
+body {
+    background: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background: var(--card-background);
+    padding: 1rem 0;
+    box-shadow: 0 4px 8px rgba(0, 255, 255, 0.2);
+}
+
+header .container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+header h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: var(--primary-color);
+}
+
+/* Chat Button */
+#chat-button {
+    background: var(--primary-color);
+    color: black;
+    font-weight: bold;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+#chat-button:hover {
+    background: var(--secondary-color);
+    color: white;
+}
+
+/* Main Content */
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* Sections */
+.incident-report, .map-section {
+    margin-bottom: 2rem;
+    background: var(--card-background);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 255, 255, 0.2);
+}
+
+/* Section Titles */
+h2 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+/* Form Styling */
+.form-group {
+    margin-bottom: 1.2rem;
+    text-align: left;
+}
+
+label {
+    color: #bbbbbb;
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+    background: var(--input-background);
+    color: white;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus, textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 10px rgba(0, 200, 255, 0.5);
+}
+
+/* Button Styling */
+.btn-primary {
+    display: inline-block;
+    background: var(--primary-color);
+    color: black;
+    font-weight: bold;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background: var(--secondary-color);
+    color: white;
+}
+
+/* Map Styling */
+#map {
+    width: 100%;
+    height: 400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 255, 255, 0.2);
+    filter: brightness(0.8);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background: var(--card-background);
+    color: #bbbbbb;
+    font-size: 0.9rem;
+}
+
+/* Logout Button */
+#logout-button {
+    background: red;
+    color: white;
+    font-weight: bold;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin-top: 1rem;
+}
+
+#logout-button:hover {
+    background: darkred;
+}
+/* Ensure Map Displays Correctly */
+#map {
+    width: 100%;
+    height: 400px;  /* Ensure the map has a fixed height */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 255, 255, 0.2);
+    filter: brightness(0.8);
+}
