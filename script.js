@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let map;
 
     if (mapContainer) {
-        map = L.map("map").setView([51.505, -0.09], 13);
+        map = L.map("map").setView([28.594195526353836, 77.2089685886433], 13);
         L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
             maxZoom: 19,
             attribution: "&copy; OpenStreetMap contributors",
