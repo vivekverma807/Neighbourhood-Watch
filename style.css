@@ -113,6 +113,13 @@ input, textarea {
     transition: 0.3s;
 }
 
+textarea {
+    height: 60px;
+    resize: vertical;
+    max-height: 120px;
+    min-height: 44px;
+}
+
 input:focus, textarea:focus {
     border-color: var(--primary-color);
     box-shadow: 0 0 10px rgba(0, 200, 255, 0.5);
@@ -180,4 +187,29 @@ footer {
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 255, 255, 0.2);
     filter: brightness(0.8);
+}
+
+/* Header Button Container */
+.header-buttons {
+    display: flex;
+    gap: 10px;  /* Space between buttons */
+}
+
+/* Buttons (Chat & Login) */
+#chat-button, #login-button {
+    background: var(--primary-color);
+    color: black;
+    font-weight: bold;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    white-space: nowrap; /* Prevents wrapping */
+}
+
+#chat-button:hover, #login-button:hover {
+    background: var(--secondary-color);
+    color: white;
 }
