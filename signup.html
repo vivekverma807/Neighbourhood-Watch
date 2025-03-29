@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup - Neighbourhood Security Network</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+    <div class="signup-container">
+        <div class="signup-box glass">
+            <h2>Create an Account</h2>
+            <form id="signup-form" method="post" action="signup.php">
+                <div class="form-group">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Choose a username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="password-container">
+                        <input type="password" id="password" name="password" placeholder="Create a password" required>
+                        <span id="toggle-password">👁</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <textarea id="address" name="address" placeholder="Enter your address" required></textarea>
+                </div>
+                <button type="submit">Signup</button>
+                <p>Already have an account? <a href="index.html">Login here</a></p>
+            </form>
+        </div>
+    </div>
+    <script>
+        // Toggle password visibility
+        const togglePassword = document.getElementById('toggle-password');
+        const passwordInput = document.getElementById('password');
+    
+        togglePassword.addEventListener('click', () => {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            togglePassword.textContent = type === 'password' ? '👁' : '🙈';
+        });
+    </script>
+    
+</body>
+</html>
