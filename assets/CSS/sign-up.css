@@ -1,103 +1,90 @@
-/* General Styles */
-body {
-    font-family: 'Poppins', sans-serif;
-    background: #121212;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+* {
     margin: 0;
-}
-
-/* Signup Container */
-.signup-container {
-    width: 100%;
-    max-width: 400px;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #ccc;
+  }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .apply_box {
+    max-width: 600px;
     padding: 20px;
-}
-
-.signup-box {
-    background: rgba(30, 30, 30, 0.9);
-    padding: 20px;
+    background-color: white;
+    margin: 0 auto;
+    margin-top: 50px;
+    box-shadow: 4px 3px 5px rgba(1, 1, 1, 0.1);
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 255, 255, 0.2);
-    text-align: center;
-}
-
-/* Form Fields */
-.form-group {
-    margin-bottom: 1rem;
-    text-align: left;
-}
-
-label {
-    color: #bbbbbb;
-    font-size: 1rem;
-    display: block;
-    margin-bottom: 0.3rem;
-}
-
-input, textarea {
-    width: 100%;
-    padding: 0.75rem;
-    font-size: 1rem;
-    border: 2px solid #333;
-    border-radius: 5px;
-    background: #252525;
-    color: white;
-    outline: none;
-}
-
-textarea {
-    resize: vertical;
-}
-
-input:focus, textarea:focus {
-    border-color: #00c8ff;
-    box-shadow: 0 0 10px rgba(0, 200, 255, 0.5);
-}
-
-/* Password Toggle */
-.password-container {
+  }
+  
+  .title_small {
+    font-size: 20px;
+  }
+  
+  .form_container {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  .form_control {
     display: flex;
-    align-items: center;
-    position: relative;
-}
-
-.password-container input {
-    flex: 1;
-}
-
-#toggle-password {
-    position: absolute;
-    right: 10px;
-    cursor: pointer;
-}
-
-/* Signup Button */
-button {
-    display: block;
-    width: 100%;
-    background: #00c8ff;
-    color: black;
-    font-weight: bold;
-    padding: 0.75rem;
-    font-size: 1rem;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-}
-
-button:hover {
-    background: #0088cc;
+    flex-direction: column;
+  }
+  
+  label {
+    font-size: 15px;
+    margin-bottom: 5px;
+  }
+  
+  input,
+  select,
+  textarea {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 15px;
+  }
+  
+  input:focus {
+    outline-color: red;
+  }
+  
+  .button_container {
+    display: flex;
+  
+    justify-content: flex-end;
+    margin-top: 20px;
+  }
+  button {
+    background-color: red;
+    border: transparent solid 2px;
+    padding: 5px 10px;
     color: white;
-}
-
-/* Responsive */
-@media (max-width: 480px) {
-    .signup-container {
-        max-width: 90%;
+    border-radius: 8px;
+    transition: 0.3s ease-in;
+  }
+  button:hover {
+    background-color: #ccc;
+    border: 2px solid red;
+    color: black;
+    transition: 0.3s ease-out;
+    cursor: pointer;
+  }
+  .textarea_control {
+    grid-column: 1 / span 2;
+  }
+  .textarea_control textarea {
+    width: 100%;
+  }
+  
+  @media (max-width: 460px) {
+    .textarea_control {
+      grid-column: 1 / span 1;
     }
-}
+  } ;

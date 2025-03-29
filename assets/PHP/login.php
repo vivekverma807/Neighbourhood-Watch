@@ -1,6 +1,6 @@
 <?php
 session_start();
-$conn = new mysqli("localhost", "root", "", "neighbourhood-watch");
+$conn = new mysqli("localhost", "root", "", "neighbourhood_watch");
 
 // ✅ Check if connection is successful
 if ($conn->connect_error) {
@@ -23,13 +23,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // ✅ Check if user exists
         if ($result->num_rows == 1) {
             $_SESSION['user'] = $username;
-            header("Location: homepage.html");
+            header("Location: ../HTML/homepage.html");
             exit;
         } else {
-            echo "<script>alert('Invalid Credentials!'); window.location.href='login.html';</script>";
+            echo "<script>alert('Invalid Credentials!'); window.location.href='../../index.html';</script>";
         }
     } else {
-        echo "<script>alert('Username and Password are required!'); window.location.href='login.html';</script>";
+        echo "<script>alert('Username and Password are required!'); window.location.href='../../index.html';</script>";
     }
 }
 
