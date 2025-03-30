@@ -48,14 +48,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Load incidents from localStorage
-    function loadIncidents() {
-        let incidents = JSON.parse(localStorage.getItem("incidents")) || [];
-        incidents.forEach(addIncidentToMap);
-    }
+    // function loadIncidents() {
+    //     let incidents = JSON.parse(localStorage.getItem("incidents")) || [];
+    //     incidents.forEach(addIncidentToMap);
+    // }
 
-    if (mapContainer) {
-        loadIncidents();
-    }
+    // if (mapContainer) {
+    //     loadIncidents();
+    // }
 
     // Handle form submission
     const form = document.getElementById("incident-form");
@@ -63,6 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
         form.addEventListener("submit", async function (e) {
             e.preventDefault();
 
+            // const username = document.getElementById("username").value.trim();
             const title = document.getElementById("title").value.trim();
             const description = document.getElementById("description").value.trim();
             const address = document.getElementById("address").value.trim();
