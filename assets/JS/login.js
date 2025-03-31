@@ -1,8 +1,8 @@
 // Automatically convert username to uppercase using JavaScript
-const usernameInput = document.getElementById('username');
-usernameInput.addEventListener('input', function () {
-    this.value = this.value.toUpperCase();
-});
+// const usernameInput = document.getElementById('username');
+// usernameInput.addEventListener('input', function () {
+//     this.value = this.value.toUpperCase();
+// });
 
 // CAPTCHA generation and validation
 const captchaElement = document.getElementById('captcha');

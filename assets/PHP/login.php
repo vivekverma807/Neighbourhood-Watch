@@ -26,10 +26,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: ../HTML/homepage.html");
             exit;
         } else {
-            echo "<script>alert('Invalid Credentials!'); window.location.href='../../index.html';</script>";
+            echo "<script>alert('Invalid Credentials!'); window.location.href='../HTML/login.html';</script>";
         }
     } else {
-        echo "<script>alert('Username and Password are required!'); window.location.href='../../index.html';</script>";
+        echo "<script>alert('Username and Password are required!'); window.location.href='../HTML/login.html';</script>";
     }
 }
 

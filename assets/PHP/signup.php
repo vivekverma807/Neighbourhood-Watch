@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fullname = trim($_POST['fullname']);
     $email = trim($_POST['email']);
     $date_of_birth = trim($_POST['dob']);
-    $phone_number = trim($_POST['number']);
+    $phone_number = trim($_POST['phone']);
     $city = trim($_POST['city']);
     $state = trim($_POST['state']);
     $username = trim($_POST['username']);
@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        echo "<script>alert('Username or Email already exists!'); window.location.href='sign-up2.html';</script>";
+        echo "<script>alert('Username or Email already exists!'); window.location.href='../HTML/sign-up.html';</script>";
         exit;
     }
 
@@ -47,12 +47,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt_login->bind_param("iss", $user_id, $username, $password);
 
         if ($stmt_login->execute()) {
-            echo "<script>alert('Registration successful! Please login.'); window.location.href='login2.html';</script>";
+            echo "<script>alert('Registration successful! Please login.'); window.location.href='../HTML/login.html';</script>";
         } else {
-            echo "<script>alert('Error inserting into login table!'); window.location.href='sign-up2.html';</script>";
+            echo "<script>alert('Error inserting into login table!'); window.location.href='../HTML/sign-up.html';</script>";
         }
     } else {
-        echo "<script>alert('Error inserting into users table!'); window.location.href='sign-up2.html';</script>";
+        echo "<script>alert('Error inserting into users table!'); window.location.href='../HTML/sign-up.html';</script>";
     }
 
     // Close statements & connection

@@ -6,6 +6,56 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Neighbourhood Watch</title>
 		<link rel="stylesheet" href="../CSS/main.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+		<style>
+			.profile-dropdown {
+				position: relative;
+				display: inline-block;
+				margin-left: 15px;
+				cursor: pointer;
+			}
+			.profile-container {
+				display: flex;
+				align-items: center;
+				gap: 8px;
+			}
+			.profile-image {
+				width: 36px;
+				height: 36px;
+				border-radius: 50%;
+				object-fit: cover;
+				border: 2px solid #000000;
+			}
+			.profile-text {
+				color: rgb(0, 0, 0);
+				font-weight: 500;
+			}
+			.dropdown-content {
+				display: none;
+				position: absolute;
+				right: 0;
+				background-color: #f9f9f9;
+				min-width: 160px;
+				box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+				z-index: 1;
+				border-radius: 4px;
+			}
+			.dropdown-content a {
+				color: black;
+				padding: 0px 6px;
+				text-decoration: none;
+				display: block;
+			}
+			.dropdown-content a:hover {
+				background-color: #f1f1f1;
+			}
+			.profile-dropdown:hover .dropdown-content {
+				display: block;
+			}
+			.profile-dropdown:hover .profile-container {
+				opacity: 0.8;
+			}
+		</style>
 	</head>
 	<body>
 
@@ -16,7 +66,18 @@
 			</nav>
 			<a href="./homepage.html" class="logo">Neighbourhood Watch</a>
 			<nav class="right">
-				<a href="../PHP/logout.php" class="button alt">Logout</a>
+				<div class="profile-dropdown">
+					<div class="profile-container">
+						<img src="../images/default-profile.jpg" alt="Profile" class="profile-image">
+						<span class="profile-text">Profile</span>
+						<i class="fas fa-caret-down" style="color: rgb(0, 0, 0);"></i>
+					</div>
+					<div class="dropdown-content">
+						<a href="../PHP/edit-profile.php"><i class="fas fa-user-edit"></i> Edit Profile</a>
+						<a href="./settings.html"><i class="fas fa-cog"></i> Settings</a>
+						<a href="../PHP/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
+					</div>
+				</div>
 			</nav>
 		</header>
 
@@ -148,6 +209,39 @@
 		<script src="../JS/skel.min.js"></script>
 		<script src="../JS/util.js"></script>
 		<script src="../JS/main.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Get profile elements
+                const profileImg = document.querySelector('.profile-image');
+                const profileText = document.querySelector('.profile-text');
+                
+                // Check if user is logged in (you'll need to implement this properly)
+                // const isLoggedIn = checkIfUserIsLoggedIn();
+                const isLoggedIn = true; // For testing, replace with actual check
+                
+                if (isLoggedIn) {
+                    // Try to load user's profile image (replace with actual user data)
+                    const userProfileImage = ''; // Set to empty to test fallback, or provide actual image path
+                    
+                    // Set profile image with fallback to default.png
+                    profileImg.src = userProfileImage || '../images/default.png';
+                    
+                    // Handle case where the image fails to load (even if default.png is missing)
+                    profileImg.onerror = function() {
+                        this.src = '../images/default.png';
+                        this.alt = 'Default Profile Image';
+                    };
+                    
+                    // Set username (replace with actual username)
+                    const username = 'John Doe'; // Replace with actual username from your system
+                    profileText.textContent = username || 'Profile';
+                } else {
+                    // User not logged in - show default profile
+                    profileImg.src = '../images/default.png';
+                    profileText.textContent = 'Profile';
+                }
+            });
+            </script>
 
 	</body>
 </html>
