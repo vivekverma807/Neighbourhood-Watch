@@ -1,60 +1,153 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neighbourhood Security Network</title>
-    <link rel="stylesheet" href="../CSS/style.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-</head>
-<body>
-    <header>
-        <div class="container">
-            <h1>Neighbourhood Security Network</h1>
-            <button id="chat-button" onclick="window.location.href = '../HTML/chat.html';">Community Chat</button>
-            <button id="login-button" onclick="window.location.href = '../PHP/logout.php';">Logout</button>
-        </div>
-    </header>
+	<head>
+		<meta charset="utf-8">
+		<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Neighbourhood Watch</title>
+		<link rel="stylesheet" href="../CSS/main.css">
+	</head>
+	<body>
 
-    <main>
-        <section class="incident-report">
-            <h2>Report an Incident</h2>
-            <form id="incident-form" class="form-card">
-                <div class="form-group">
-                    <label for="title">Title:</label>
-                    <input type="text" id="title" name="title" placeholder="Enter incident title" required>
-                </div>
+		<!-- Header -->
+		<header id="header">
+			<nav class="left">
+				<a href="#menu"><span>Menu</span></a>
+			</nav>
+			<a href="./homepage.html" class="logo">Neighbourhood Watch</a>
+			<nav class="right">
+				<a href="../PHP/logout.php" class="button alt">Logout</a>
+			</nav>
+		</header>
 
-                <div class="form-group">
-                    <label for="description">Description:</label>
-                    <textarea id="description" name="description" placeholder="Enter incident details" required></textarea>
-                </div>
+		<!-- Menu -->
+		<nav id="menu">
+			<ul class="links">
+				<li><a href="./homepage.html">Home</a></li>
+				<li><a href="./map.html">Map</a></li>
+				<li><a href="./report-incident.html">Report Incident</a></li>
+				<li><a href="./emergency-pin.html">Emergency Pin</a></li>
+				<li><a href="./community-chat.html">Community Chat</a></li>
+				<li><a href="./about.html">About</a></li>
+				<li><a href="./contact.html">Contact Us</a></li>
+			</ul>
+			<ul class="actions vertical">
+				<li><a href="../PHP/logout.php" class="button fit">Logout</a></li>
+			</ul>
+		</nav>
 
-                <div class="form-group">
-                    <label for="address">Location:</label>
-                    <input type="text" id="address" name="address" placeholder="Enter incident location" >
-                </div>
+		<!-- Banner -->
+		<section id="banner">
+			<div class="content">
+				<h1>Ipsum sed lorem</h1>
+				<p>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod<br>sed arcu cras consequat lorem ipsum dolor sit amet.</p>
+				<ul class="actions">
+					<li><a href="#one" class="button scrolly">Get Started</a></li>
+				</ul>
+			</div>
+		</section>
 
-                <div class="form-group">
-                    <label for="location">Latitude, Longitude (optional):</label>
-                    <input type="text" id="location" name="location" placeholder="e.g., 51.505, -0.09">
-                </div>
+		<!-- Section One -->
+		<section id="one" class="wrapper">
+			<div class="inner flex flex-3">
+				<div class="flex-item left">
+					<div>
+						<h3>Magna ultricies</h3>
+						<p>Morbi in sem quis dui plalorem ipsum<br> euismod in, pharetra sed ultricies.</p>
+					</div>
+					<div>
+						<h3>Ipsum adipiscing lorem</h3>
+						<p>Tristique yonve cursus jam nulla quam<br> loreipsu gravida adipiscing lorem</p>
+					</div>
+				</div>
+				<div class="flex-item image fit round">
+					<img src="../images/pic01.jpg" alt="Image" width="330" height="330">
+				</div>
+				<div class="flex-item right">
+					<div>
+						<h3>Tempus nullam</h3>
+						<p>Sed adipiscing ornare risus. Morbi estes<br> blandit sit et amet, sagittis magna.</p>
+					</div>
+					<div>
+						<h3>Suscipit nibh dolore</h3>
+						<p>Pellentesque egestas sem. Suspendisse<br> modo ullamcorper feugiat lorem.</p>
+					</div>
+				</div>
+			</div>
+		</section>
 
-                <button type="submit" class="btn-primary">Submit</button>
-            </form>
-        </section>
+		<!-- Section Two -->
+		<section id="two" class="wrapper style1 special">
+			<div class="inner">
+				<h2>Feugiat lorem</h2>
+				<figure>
+					<blockquote>
+						"Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra<br> magna etiam lorem ultricies in diam. Sed arcu cras consequat."
+					</blockquote>
+					<footer>
+						<cite class="author">Jane Anderson</cite>
+						<cite class="company">CEO, Untitled</cite>
+					</footer>
+				</figure>
+			</div>
+		</section>
 
-        <section class="map-section">
-            <h2>Community Incident Map</h2>
-            <div id="map"></div>
-        </section>
-    </main>
+		<!-- Section Three -->
+		<section id="three" class="wrapper">
+			<div class="inner flex flex-3">
+				<div class="flex-item box">
+					<div class="image fit">
+						<img src="../images/pic02.jpg" alt="Image" width="418" height="200">
+					</div>
+					<div class="content">
+						<h3>Consequat</h3>
+						<p>Placerat ornare. Pellentesque od sed euismod in, pharetra ltricies edarcu cas consequat.</p>
+					</div>
+				</div>
+				<div class="flex-item box">
+					<div class="image fit">
+						<img src="../images/pic03.jpg" alt="Image" width="418" height="200">
+					</div>
+					<div class="content">
+						<h3>Adipiscing</h3>
+						<p>Morbi in sem quis dui placerat Pellentesque odio nisi, euismod pharetra lorem ipsum.</p>
+					</div>
+				</div>
+				<div class="flex-item box">
+					<div class="image fit">
+						<img src="../images/pic04.jpg" alt="Image" width="418" height="200">
+					</div>
+					<div class="content">
+						<h3>Malesuada</h3>
+						<p>Nam dui mi, tincidunt quis, accu an porttitor, facilisis luctus que metus vulputate sem magna.</p>
+					</div>
+				</div>
+			</div>
+		</section>
 
-    <footer>
-        <p>Neighbourhood Security Network © 2025</p>
-    </footer>
+		<!-- Footer -->
+		<footer id="footer">
+			<div class="inner">
+				<h2>Get In Touch</h2>
+				<ul class="actions">
+					<li><span class="icon fa-phone"></span> <a href="#">(000) 000-0000</a></li>
+					<li><span class="icon fa-envelope"></span> <a href="#">information@untitled.tld</a></li>
+					<li><span class="icon fa-map-marker"></span> 123 Somewhere Road, Nashville, TN 00000</li>
+				</ul>
+			</div>
+		</footer>
 
-    <script src="../JS/script.js"></script>
-</body>
+		<!-- Copyright -->
+		<div class="copyright">
+			Powered by: <a href="https://templated.co/">TEMPLATED</a>. Distributed by: <a href="https://themewagon.com/">ThemeWagon</a>.
+		</div>
+
+		<!-- Scripts -->
+		<script src="../JS/jquery.min.js"></script>
+		<script src="../JS/jquery.scrolly.min.js"></script>
+		<script src="../JS/skel.min.js"></script>
+		<script src="../JS/util.js"></script>
+		<script src="../JS/main.js"></script>
+
+	</body>
 </html>

@@ -1,32 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Login - Neighbourhood Security Network</title>
-        <link rel="stylesheet" href="../../assets/CSS/style.css">
-        <link rel="stylesheet" href="../../assets/CSS/login.css">
-    </head>
-    <body>
-        <div class="login-container">
-            <div class="login-box glass">
-                <h2>Login</h2>
-                <form id="login-form" method="post" action="../PHP/login.php">
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" id="username" name="username" placeholder="Enter your username" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <div class="password-container">
-                            <input type="password" id="password" name="password" placeholder="Enter your password" required>
-                            <span id="toggle-password">👁</span>
-                        </div>
-                    </div>
-                    <button type="submit">Login</button>
-                    <p>Don't have an account? <a href="../HTML/sign-up.html">Signup here</a></p>
-                </form>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../CSS/login.css">
+    <link rel="shortcut icon" href="../images/login.png" type="image/x-icon">
+    <title>Login - Neighbourhood Watch</title>
+
+</head>
+<body oncontextmenu="return false" onselectstart="return false">
+    <div class="wrapper">
+        <form id="loginForm" action="../PHP/login.php" method="POST">
+            <h1>Login</h1>
+            <!-- <div class="imp">
+                <i class='bx bxs-error'></i>
+                <h3 id="imphead">This is only for Registered Users</h3>
+            </div> -->
+
+            <!-- Username -->
+            <div class="input-box">
+                <input type="text" name="username" id="username" placeholder="Username" required maxlength="12">
+                <i class='bx bxs-user'></i>
             </div>
-        </div>
-    </body>
+
+            <!-- Password -->
+            <div class="input-box">
+                <input type="password" name="password" id="password" placeholder="Password" required maxlength="8">
+                <i class='bx bx-hide eye-icon' id="togglePassword"></i>
+            </div>
+
+            <!-- CAPTCHA Section -->
+            <div class="input-box">
+                <input type="text" id="captchaInput" placeholder="Enter CAPTCHA" required maxlength="5">
+                <button type="button" id="refreshCaptcha" class="captcha-refresh">⟳</button>
+                <span id="captcha" class="captcha-box"></span>
+            </div>
+
+
+            <!-- Submit Button -->
+            <button class="btn" type="submit" id="submitButton">Login</button>
+
+            
+            <div class="register-link">
+                <p>Don't have an account ? <a href="./sign-up.html">Register</a></p>
+            </div>
+        </form>
+    </div>
+
+    <script src="../JS/login.js"></script>
+</body>
 </html>

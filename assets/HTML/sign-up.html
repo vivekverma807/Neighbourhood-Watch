@@ -2,67 +2,64 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Registration - Neighbourhood Watch</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../CSS/sign-up.css">
+    <link rel="shortcut icon" href="../images/sign-up.png" type="image/x-icon">
+    <title>Sign Up | Neighbourhood Watch</title>
 </head>
 <body>
-    <div class="container">
-        <div class="apply_box">
-            <h1>User Registration</h1>
-            <form action="../PHP/signup.php" method="POST">
-                <div class="form_container">
-                    
-                    <!-- Full Name -->
-                    <div class="form_control">
-                        <label for="fullname">Full Name</label>
-                        <input type="text" id="fullname" name="fullname" placeholder="Enter Full Name..." required>
-                    </div>
+    <div class="wrapper">
+        <form action="../PHP/signup.php" method="POST">
+            <h1>Register Yourself</h1>
+            <div class="input-box">
+                <label for="fullname">Full Name :</label>
+                <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+            </div>
 
-                    <!-- Email -->
-                    <div class="form_control">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="Enter Email..." required>
-                    </div>
+            <div class="input-box">
+                <label for="email">Email :</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
 
-                    <!-- Username -->
-                    <div class="form_control">
-                        <label for="username">Username</label>
-                        <input type="text" id="username" name="username" maxlength="10" placeholder="Choose a Username..." required>
-                    </div>
+            <div class="input-box">
+                <label for="dob">Date of Birth :</label>
+                <input type="date" id="dob" name="dob" required>
+            </div>
 
-                    <!-- Password -->
-                    <div class="form_control">
-                        <label for="password">Password</label>
-                        <div class="password-container">
-                            <input type="password" id="password" name="password" maxlength="8" placeholder="Enter Password..." required>
-                            <span id="toggle-password">👁</span>
-                        </div>
-                    </div>
+            <div class="input-box">
+                <label for="phone">Mobile Number :</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your number" pattern="[0-9]{10,15}" minlength="10" maxlength="10" required>
+            </div>
 
-                    <!-- Phone -->
-                    <div class="form_control">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" pattern="[0-9]{10,15}" placeholder="Enter Phone Number..." minlength="10" maxlength="10" required>
-                    </div>
+            <div class="input-box">
+                <label for="city">City :</label>
+                <input type="text" id="city" name="city" placeholder="Enter your City" required>
+            </div>
 
-                    <!-- Address -->
-                    <div class="textarea_control">
-                        <label for="address">Address</label>
-                        <textarea id="address" name="address" rows="4" placeholder="Enter Address..." required></textarea>
-                    </div>
+            <div class="input-box">
+                <label for="state">State :</label>
+                <input type="text" id="state" name="state" placeholder="Enter your State" required>
+            </div>
 
-                </div>
+            <br>
 
-                <div class="button_container">
-                    <p>Already have an account? <a href="../../index.html" class="login-button">Login</a></p>
-                    <button type="submit">Register</button>
-                </div>
-            </form>
-        </div>
+            <div class="input-box">
+                <input type="text" id="username" name="username" placeholder="Create your Username" minlength="8" maxlength="10" required>
+                <i class='bx bxs-user'></i>
+            </div>
+
+            <div class="input-box">
+                <input type="password" id="password" name="password" placeholder="Create your Password" minlength="8" maxlength="8" required>
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+
+            <button class="btn" type="submit">Submit</button>
+
+            <div class="register-link">
+                <p>Already have an account? <a href="./login.html">Login</a></p>
+            </div>
+        </form>
     </div>
-
-    <script src="../JS/script.js"></script>
 </body>
 </html>

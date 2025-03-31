@@ -1,77 +1,215 @@
- /* Responsive and Modern Login Form */
- .login-container {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background: var(--background-color);
+    min-height: 100vh;
+    background: url(../images/123.jpg);
+    background-size: cover;
+    background-position: center;
+    
+
 }
 
-.login-box {
-    background: var(--card-background);
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 255, 255, 0.2);
+#imphead{
+    color: rgba(241, 0, 0, 0.92);
     text-align: center;
-    width: 100%;
-    max-width: 400px;
+    margin-top: 10px;
 }
 
-.login-box h2 {
-    color: var(--primary-color);
-    margin-bottom: 1.5rem;
-}
 
-.form-group {
-    margin-bottom: 1rem;
-    text-align: left;
-}
-
-.form-group label {
-    color: #bbbbbb;
-    font-size: 1rem;
-    display: block;
-    margin-bottom: 0.5rem;
-}
-
-.password-container {
-    position: relative;
-}
-
-.password-container input {
-    width: 100%;
-    padding-right: 2.5rem;
-}
-
-#toggle-password {
+.imp i{
     position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    color: var(--primary-color);
+    font-size: 20px;
+    transform: translateY(10%);
+    color: red;
 }
 
-.btn-primary {
+.wrapper {
+    width: 420px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .1);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    color: #8ae13d;
+    border-radius: 10px;
+    padding: 30px 40px;
+
+}
+
+.wrapper h1{
+    font-size: 36px;
+    text-align: center;
+}
+
+.wrapper .input-box{
+    position: relative;
     width: 100%;
-    padding: 0.75rem;
-    background: var(--primary-color);
-    color: black;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
+    height: 50px;
+    /* background: salmon; */
+    margin: 30px 0;
+
 }
 
-.btn-primary:hover {
-    background: var(--secondary-color);
+.input-box input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: white;
+    padding: 20px 45px 20px 20px;
+    letter-spacing: 50px;
+}
+
+.input-box input::placeholder{
     color: white;
 }
 
-@media (max-width: 480px) {
-    .login-box {
-        width: 90%;
-        padding: 1.5rem;
-    }
+.input-box i{
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+
 }
+
+.wrapper .remember-forgot{
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    margin: -15px 0 15px;
+
+}
+
+.remember-forgot label input{
+    accent-color: white;
+    margin-right: 3px;
+
+}
+
+.remember-forgot a{
+    color: white;
+    text-decoration: none;
+
+}
+
+.remember-forgot a:hover{
+    text-decoration: underline;
+
+}
+
+.wrapper .btn{
+    width: 100%;
+    height: 45px;
+    background: white;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: black;
+}
+
+.wrapper .register-link{
+    font-size: 15px;
+    text-align: center;
+    margin: 20px 0 15px;
+
+}
+
+.register-link p a{
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+
+}
+
+.register-link p a:hover{
+    text-decoration: underline;
+
+}
+
+    /* CAPTCHA Section */
+    .input-box {
+        position: relative;
+        width: 100%;
+        height: 50px;
+        margin: 30px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between; /* Ensure input and button are spaced out */
+    }
+
+    /* CAPTCHA Input Field Style */
+    #captchaInput {
+        flex: 0 0 180px; /* Fix the width of the input field */
+        height: 100%;
+        background: transparent;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-radius: 40px;
+        padding: 0 15px;
+        font-size: 16px;
+        color: white;
+        outline: none;
+        margin-right: 10px; /* Space between input and button */
+    }
+
+    /* Refresh button style */
+    .captcha-refresh {
+        height: 100%;
+        width: 50px; /* Fixed width */
+        background: transparent;
+        border: none;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+        outline: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 40px;
+    }
+
+    .captcha-refresh:hover {
+        color: red;
+        background-color: azure;
+        transition: 0.3s ease-in-out;
+    }
+
+    /* CAPTCHA text styling */
+    .captcha-box {
+        position: relative;
+        color: black;
+        background: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 20px;
+        pointer-events: none;
+        z-index: 1;
+        margin-left: 15px;
+        width: auto; /* Ensure the CAPTCHA box adjusts based on its content */
+    }
+
+    /* Password Visibility Toggle */
+    #togglePassword:hover {
+        cursor: pointer;
+    }
+
+    .input-box input{
+        letter-spacing: 4px;
+    }
+    .input-box input::placeholder{
+        letter-spacing: 1px;
+    }

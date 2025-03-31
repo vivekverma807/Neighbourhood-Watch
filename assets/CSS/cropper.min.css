@@ -1,0 +1,35 @@
+/* Cropper.js Default Styles */
+.cropper-container {
+    position: relative;
+    font-size: 0;
+    line-height: 0;
+}
+
+.cropper-wrap-box, .cropper-canvas, .cropper-drag-box, .cropper-crop-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.cropper-dashed {
+    position: absolute;
+    display: block;
+    border: 1px dashed #eee;
+}
+
+.cropper-line {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.cropper-point {
+    position: absolute;
+    display: block;
+    width: 8px;
+    height: 8px;
+    background-color: #eee;
+}
