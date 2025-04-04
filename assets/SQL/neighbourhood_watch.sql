@@ -14,6 +14,7 @@ CREATE TABLE users (
     username VARCHAR(12) UNIQUE NOT NULL,
     password VARCHAR(8) NOT NULL
 );
+
 -- Login Table
 CREATE TABLE login (
     -- login_id INT AUTO_INCREMENT PRIMARY KEY,  -- Added primary key
