@@ -1,0 +1,79 @@
+/* Full-page map styling - no scrolling allowed */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+/* Fixed header styling */
+#header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1001;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    height: 60px; /* Fixed header height */
+}
+
+/* Map container - takes remaining space below header */
+#map-container {
+    position: fixed;
+    top: 60px; /* Same as header height */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+}
+
+/* Map fills its container */
+#map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+
+/* Map controls styling */
+.map-controls {
+    position: absolute;
+    top: 80px; /* Below header */
+    right: 20px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    width: 300px;
+    max-height: calc(100vh - 100px); /* Account for header */
+    overflow-y: auto;
+}
+
+/* Hide menu completely */
+#menu {
+    display: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #header {
+        height: 50px; /* Smaller header on mobile */
+    }
+    
+    #map-container {
+        top: 50px; /* Adjust map position */
+    }
+    
+    .map-controls {
+        width: 90%;
+        left: 5%;
+        right: 5%;
+        top: 70px; /* Adjusted for smaller header */
+    }
+}

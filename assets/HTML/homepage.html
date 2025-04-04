@@ -210,39 +210,6 @@
 		<script src="../JS/skel.min.js"></script>
 		<script src="../JS/util.js"></script>
 		<script src="../JS/main.js"></script>
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                // Get profile elements
-                const profileImg = document.querySelector('.profile-image');
-                const profileText = document.querySelector('.profile-text');
-                
-                // Check if user is logged in (you'll need to implement this properly)
-                // const isLoggedIn = checkIfUserIsLoggedIn();
-                const isLoggedIn = true; // For testing, replace with actual check
-                
-                if (isLoggedIn) {
-                    // Try to load user's profile image (replace with actual user data)
-                    const userProfileImage = ''; // Set to empty to test fallback, or provide actual image path
-                    
-                    // Set profile image with fallback to default.png
-                    profileImg.src = userProfileImage || '../images/default.png';
-                    
-                    // Handle case where the image fails to load (even if default.png is missing)
-                    profileImg.onerror = function() {
-                        this.src = '../images/default.png';
-                        this.alt = 'Default Profile Image';
-                    };
-                    
-                    // Set username (replace with actual username)
-                    const username = 'John Doe'; // Replace with actual username from your system
-                    profileText.textContent = username || 'Profile';
-                } else {
-                    // User not logged in - show default profile
-                    profileImg.src = '../../profile-image/default.png';
-                    profileText.textContent = 'Profile';
-                }
-            });
-            </script>
-
+		
 	</body>
 </html>

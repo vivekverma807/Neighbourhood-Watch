@@ -1,99 +1,147 @@
 <!DOCTYPE HTML>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="shortcut icon" href="../images/neighbourhood-watch.png" type="image/x-icon">
-        <title>Report Incident - Neighbourhood Watch</title>
-        <link rel="stylesheet" href="../CSS/main.css">
-    </head>
-    <body>
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="../images/neighbourhood-watch.png" type="image/x-icon">
+    <title>Report Incident - Neighbourhood Watch</title>
+    <link rel="stylesheet" href="../CSS/main.css">
+    <link rel="stylesheet" href="../CSS/report-incident.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-        <!-- Header -->
-        <header id="header">
-            <nav class="left">
-                <a href="#menu"><span>Menu</span></a>
-            </nav>
-            <a href="index.html" class="logo">Neighbourhood Watch</a>
-            <nav class="right">
-                <a href="../HTML/login.html" class="button alt">Log in</a>
-            </nav>
-        </header>
+</head>
+<body>
 
-        <!-- Menu -->
-        <nav id="menu">
-            <ul class="links">
-                <li><a href="./homepage.html">Home</a></li>
-				<li><a href="./map.html">Map</a></li>
-				<li><a href="./report-incident.html">Report Incident</a></li>
-				<li><a href="./emergency-pin.html">Emergency Pin</a></li>
-				<li><a href="./community-chat.html">Community Chat</a></li>
-				<li><a href="./about.html">About</a></li>
-				<li><a href="./contact.html">Contact</a></li>
-            </ul>
-            <!-- <ul class="actions vertical">
-                <li><a href="#" class="button fit">Login</a></li>
-            </ul> -->
+    <!-- Header -->
+    <header id="header">
+        <nav class="left">
+            <a href="#menu"><span>Menu</span></a>
         </nav>
+        <a href="index.html" class="logo">Neighbourhood Watch</a>
+        <nav class="right">
+            <a href="../HTML/login.html" class="button alt">Log in</a>
+        </nav>
+    </header>
 
-        <!-- Main Content -->
-        <section id="main" class="wrapper">
-            <div class="inner">
-                <header class="align-center">
-                    <h1>Report Incident</h1>
-                    <p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
-                </header>
-                <div class="image fit">
-                    <img src="../images/neighbourhood-watch.png" alt="Generic Page Image">
+    <!-- Menu -->
+    <nav id="menu">
+        <ul class="links">
+            <li><a href="./homepage.html">Home</a></li>
+            <li><a href="./map.html">Map</a></li>
+            <li><a href="./report-incident.html">Report Incident</a></li>
+            <li><a href="./emergency-pin.html">Emergency Pin</a></li>
+            <li><a href="./community-chat.html">Community Chat</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <section id="main" class="wrapper">
+        <div class="inner">
+            <header class="align-center">
+                <h1>Report an Incident</h1>
+                <p>Help keep your neighborhood safe by reporting suspicious activities or emergencies</p>
+            </header>
+
+            <div class="report-container">
+                <div class="emergency-notice">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Emergency Notice</h3>
+                    <p>If this is an immediate life-threatening emergency, please call your local emergency number first.</p>
                 </div>
-                <p>
-                    Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non 
-                    faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan 
-                    varius montes viverra nibh in adipiscing blandit tempus accumsan.
-                </p>
-                <p>
-                    Aenean iaculis, neque sed pretium egestas, nunc lacus tempus enim, nec tincidunt urna massa a libero. 
-                    Aenean mattis bibendum est, a pharetra elit. Morbi commodo lectus quis blandit mattis. Cras pharetra quam 
-                    quis tincidunt tempus. Donec a sem magna. Nullam purus purus, fermentum id lorem sit amet, porta elementum 
-                    neque. Proin vulputate metus ac faucibus luctus.
-                </p>
-                <p>
-                    Ut congue purus sed elit consectetur tempus. Duis convallis, quam quis pellentesque vestibulum, tellus arcu 
-                    hendrerit ante, sed dictum felis nisl vitae magna. Integer et sapien a erat molestie tempor. Cras est odio, 
-                    suscipit id porttitor id, mollis et ligula. Curabitur molestie mi molestie accumsan faucibus. Vestibulum ante 
-                    ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer porta malesuada pellentesque. 
-                    Morbi imperdiet dictum velit, eu volutpat sem posuere non. Fusce ullamcorper gravida velit, sed sollicitudin 
-                    libero iaculis id. Ut eu neque non odio fringilla faucibus nec quis neque. Quisque et nisi fermentum, tincidunt 
-                    libero a, condimentum ligula. Quisque ultrices blandit lacinia. Nulla velit lorem, placerat nec eros ut, 
-                    fermentum pharetra dolor. Maecenas arcu ipsum, mattis et suscipit sed, convallis nec lectus. Nulla facilisi.
-                </p>
-            </div>
-        </section>
 
-        <!-- Footer -->
-        <footer id="footer">
-            <div class="inner">
-                <h2>Get In Touch</h2>
-                <ul class="actions">
-                    <li><span class="icon fa-phone"></span> <a href="#">(000) 000-0000</a></li>
-                    <li><span class="icon fa-envelope"></span> <a href="#">information@untitled.tld</a></li>
-                    <li><span class="icon fa-map-marker"></span> 123 Somewhere Road, Nashville, TN 00000</li>
-                </ul>
-            </div>
-        </footer>
+                <form id="incident-form" class="form-card" action="../PHP/incident-process.php" method="POST">
+                    <div class="form-group">
+                        <label for="title">Incident Title*</label>
+                        <input type="text" id="title" name="title" placeholder="Brief description of the incident" required>
+                    </div>
 
-        <!-- Copyright -->
-        <div class="copyright">
-            Developed by: <a href="https://github.com/Yuvrajkumar1668">Yuvraj Singh</a> & <a href="https://github.com/vivekverma807">Vivek Kumar Verma</a>.
+                    <div class="form-group">
+                        <label for="category">Incident Category*</label>
+                        <select id="category" name="category" required>
+                            <option value="" disabled selected>Select a category</option>
+                            <option value="suspicious">Suspicious Activity</option>
+                            <option value="theft">Theft/Burglary</option>
+                            <option value="vandalism">Vandalism</option>
+                            <option value="traffic">Traffic Hazard</option>
+                            <option value="noise">Excessive Noise</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Detailed Description*</label>
+                        <textarea id="description" name="description" placeholder="Please provide as much detail as possible about what you observed..." required></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="date">Date of Incident*</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="time">Approximate Time*</label>
+                            <input type="time" id="time" name="time" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Location/Address*</label>
+                        <input type="text" id="address" name="address" placeholder="Street address or landmark" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location">GPS Coordinates (optional)</label>
+                        <input type="text" id="location" name="location" placeholder="e.g., 51.505, -0.09">
+                        <small>You can get these from Google Maps by right-clicking on a location</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="evidence">Upload Evidence (optional)</label>
+                        <input type="file" id="evidence" name="evidence" accept="image/*,video/*">
+                        <small>Photos or videos that might help authorities (max 5MB)</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact">Your Contact Information (optional)</label>
+                        <input type="text" id="contact" name="contact" placeholder="Email or phone number">
+                        <small>For follow-up questions (will be kept confidential)</small>
+                    </div>
+
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-paper-plane"></i> Submit Report
+                    </button>
+                </form>
+            </div>
         </div>
+    </section>
 
-        <!-- Scripts -->
-        <script src="../JS/jquery.min.js"></script>
-        <script src="../JS/jquery.scrolly.min.js"></script>
-        <script src="../JS/skel.min.js"></script>
-        <script src="../JS/util.js"></script>
-        <script src="../JS/main.js"></script>
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="inner">
+            <h2>Need Immediate Help?</h2>
+            <ul class="actions">
+                <li><span class="icon fa-phone"></span> <a href="tel:911">Emergency: 911</a></li>
+                <li><span class="icon fa-phone"></span> <a href="tel:100">Police: 100</a></li>
+                <li><span class="icon fa-phone"></span> <a href="tel:101">Fire: 101</a></li>
+            </ul>
+        </div>
+    </footer>
 
-    </body>
+    <!-- Copyright -->
+    <div class="copyright">
+        Developed by: <a href="https://github.com/Yuvrajkumar1668">Yuvraj Singh</a> & <a href="https://github.com/vivekverma807">Vivek Kumar Verma</a>.
+    </div>
+
+    <!-- Scripts -->
+    <script src="../JS/jquery.min.js"></script>
+    <script src="../JS/jquery.scrolly.min.js"></script>
+    <script src="../JS/skel.min.js"></script>
+    <script src="../JS/util.js"></script>
+    <script src="../JS/main.js"></script>
+    <script src="../JS/script.js"></script>
+
+</body>
 </html>

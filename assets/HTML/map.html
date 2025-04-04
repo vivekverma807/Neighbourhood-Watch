@@ -5,8 +5,11 @@
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" href="../images/neighbourhood-watch.png" type="image/x-icon">
-        <title>Map - Neighbourhood Watch</title>
+        <title>Community Map - Neighbourhood Watch</title>
         <link rel="stylesheet" href="../CSS/main.css">
+        <link rel="stylesheet" href="../CSS/map.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
     </head>
     <body>
 
@@ -16,76 +19,61 @@
                 <a href="#menu"><span>Menu</span></a>
             </nav>
             <a href="index.html" class="logo">Neighbourhood Watch</a>
-            <nav class="right">
+            <!-- <nav class="right">
                 <a href="../HTML/login.html" class="button alt">Log in</a>
-            </nav>
+            </nav> -->
         </header>
 
-        <!-- Menu -->
-        <nav id="menu">
-            <ul class="links">
-                <li><a href="./homepage.html">Home</a></li>
-				<li><a href="./map.html">Map</a></li>
-				<li><a href="./report-incident.html">Report Incident</a></li>
-				<li><a href="./emergency-pin.html">Emergency Pin</a></li>
-				<li><a href="./community-chat.html">Community Chat</a></li>
-				<li><a href="./about.html">About</a></li>
-				<li><a href="./contact.html">Contact</a></li>
-            </ul>
-            <!-- <ul class="actions vertical">
-                <li><a href="#" class="button fit">Login</a></li>
-            </ul> -->
-        </nav>
-
-        <!-- Main Content -->
-        <section id="main" class="wrapper">
-            <div class="inner">
-                <header class="align-center">
-                    <h1><Map></Map></h1>
-                    <p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
-                </header>
-                <div class="image fit">
-                    <img src="../images/neighbourhood-watch.png" alt="Generic Page Image">
+        <!-- Map Container -->
+        <div id="map-container">
+            <div id="map"></div>
+            
+            <!-- Map Controls Panel -->
+            <!-- <div class="map-controls">
+                <h3>Incident Filters</h3>
+                <div class="incident-filter">
+                    <div class="filter-option">
+                        <input type="checkbox" id="filter-theft" checked>
+                        <label for="filter-theft">Theft/Burglary</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="filter-vandalism" checked>
+                        <label for="filter-vandalism">Vandalism</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="filter-suspicious" checked>
+                        <label for="filter-suspicious">Suspicious Activity</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="filter-traffic" checked>
+                        <label for="filter-traffic">Traffic Incidents</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="filter-other" checked>
+                        <label for="filter-other">Other Incidents</label>
+                    </div>
+                </div> -->
+                
+                <div class="map-legend">
+                    <h4>Legend</h4>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #e74c3c;"></div>
+                        <span>Emergency</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #f39c12;"></div>
+                        <span>Warning</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #3498db;"></div>
+                        <span>Information</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #2ecc71;"></div>
+                        <span>Resolved</span>
+                    </div>
                 </div>
-                <p>
-                    Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non 
-                    faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan 
-                    varius montes viverra nibh in adipiscing blandit tempus accumsan.
-                </p>
-                <p>
-                    Aenean iaculis, neque sed pretium egestas, nunc lacus tempus enim, nec tincidunt urna massa a libero. 
-                    Aenean mattis bibendum est, a pharetra elit. Morbi commodo lectus quis blandit mattis. Cras pharetra quam 
-                    quis tincidunt tempus. Donec a sem magna. Nullam purus purus, fermentum id lorem sit amet, porta elementum 
-                    neque. Proin vulputate metus ac faucibus luctus.
-                </p>
-                <p>
-                    Ut congue purus sed elit consectetur tempus. Duis convallis, quam quis pellentesque vestibulum, tellus arcu 
-                    hendrerit ante, sed dictum felis nisl vitae magna. Integer et sapien a erat molestie tempor. Cras est odio, 
-                    suscipit id porttitor id, mollis et ligula. Curabitur molestie mi molestie accumsan faucibus. Vestibulum ante 
-                    ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer porta malesuada pellentesque. 
-                    Morbi imperdiet dictum velit, eu volutpat sem posuere non. Fusce ullamcorper gravida velit, sed sollicitudin 
-                    libero iaculis id. Ut eu neque non odio fringilla faucibus nec quis neque. Quisque et nisi fermentum, tincidunt 
-                    libero a, condimentum ligula. Quisque ultrices blandit lacinia. Nulla velit lorem, placerat nec eros ut, 
-                    fermentum pharetra dolor. Maecenas arcu ipsum, mattis et suscipit sed, convallis nec lectus. Nulla facilisi.
-                </p>
             </div>
-        </section>
-
-        <!-- Footer -->
-        <footer id="footer">
-            <div class="inner">
-                <h2>Get In Touch</h2>
-                <ul class="actions">
-                    <li><span class="icon fa-phone"></span> <a href="#">(000) 000-0000</a></li>
-                    <li><span class="icon fa-envelope"></span> <a href="#">information@untitled.tld</a></li>
-                    <li><span class="icon fa-map-marker"></span> 123 Somewhere Road, Nashville, TN 00000</li>
-                </ul>
-            </div>
-        </footer>
-
-        <!-- Copyright -->
-        <div class="copyright">
-            Developed by: <a href="https://github.com/Yuvrajkumar1668">Yuvraj Singh</a> & <a href="https://github.com/vivekverma807">Vivek Kumar Verma</a>.
         </div>
 
         <!-- Scripts -->
@@ -94,6 +82,99 @@
         <script src="../JS/skel.min.js"></script>
         <script src="../JS/util.js"></script>
         <script src="../JS/main.js"></script>
-
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+        <!-- In the scripts section of map.html, replace the existing script with: -->
+        <script src="../JS/map.js"></script>
+        
+        <script>
+            // Initialize the map
+            document.addEventListener('DOMContentLoaded', function() {
+                // Default coordinates (center of the map)
+                const defaultLat = 51.505;
+                const defaultLng = -0.09;
+                
+                // Create map instance
+                const map = L.map('map').setView([defaultLat, defaultLng], 13);
+                
+                // Add tile layer (OpenStreetMap)
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(map);
+                
+                // Sample incident markers (replace with real data from your backend)
+                const incidents = [
+                    {
+                        lat: 51.505,
+                        lng: -0.09,
+                        title: "Suspicious vehicle",
+                        type: "suspicious",
+                        status: "warning",
+                        description: "White van circling the neighborhood for past hour"
+                    },
+                    {
+                        lat: 51.51,
+                        lng: -0.1,
+                        title: "Bicycle theft",
+                        type: "theft",
+                        status: "emergency",
+                        description: "Bike stolen from front yard between 2-4pm"
+                    },
+                    {
+                        lat: 51.515,
+                        lng: -0.08,
+                        title: "Graffiti",
+                        type: "vandalism",
+                        status: "information",
+                        description: "New graffiti on park walls"
+                    }
+                ];
+                
+                // Icon colors based on status
+                const iconColors = {
+                    emergency: 'red',
+                    warning: 'orange',
+                    information: 'blue',
+                    resolved: 'green'
+                };
+                
+                // Create custom icons
+                function getIcon(status) {
+                    return L.divIcon({
+                        className: 'custom-icon',
+                        html: `<div style="background-color: ${iconColors[status]}; 
+                               width: 20px; 
+                               height: 20px; 
+                               border-radius: 50%; 
+                               border: 2px solid white;
+                               box-shadow: 0 0 5px rgba(0,0,0,0.3);"></div>`,
+                        iconSize: [24, 24],
+                        iconAnchor: [12, 12]
+                    });
+                }
+                
+                // Add incident markers to map
+                incidents.forEach(incident => {
+                    const marker = L.marker([incident.lat, incident.lng], {
+                        icon: getIcon(incident.status)
+                    }).addTo(map);
+                    
+                    marker.bindPopup(`
+                        <h3>${incident.title}</h3>
+                        <p><strong>Type:</strong> ${incident.type}</p>
+                        <p>${incident.description}</p>
+                        <small>Reported: Today</small>
+                    `);
+                });
+                
+                // Add filter functionality
+                document.querySelectorAll('.incident-filter input').forEach(checkbox => {
+                    checkbox.addEventListener('change', function() {
+                        // Implement filter logic here
+                        console.log(`Filter ${this.id} changed to ${this.checked}`);
+                        // You would typically loop through markers and show/hide based on filters
+                    });
+                });
+            });
+        </script>
     </body>
 </html>

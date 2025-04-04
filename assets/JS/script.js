@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (mapContainer) {
         map = L.map("map").setView([28.594195526353836, 77.2089685886433], 13);
         L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-            maxZoom: 19,
+            // maxZoom: 19,
             attribution: "&copy; OpenStreetMap contributors",
         }).addTo(map);
 
@@ -109,4 +109,30 @@ document.getElementById("toggle-password").addEventListener("click", function() 
     } else {
         passwordInput.type = "password";
     }
+});
+
+// Add this to your existing script.js or create a new file for form handling
+document.getElementById('incident-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    
+    fetch('../PHP/incident-process.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Incident reported successfully!');
+            // Optionally redirect to map page
+            window.location.href = '../HTML/map.html';
+        } else {
+            alert('Error: ' + data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred while submitting the report');
+    });
 });
