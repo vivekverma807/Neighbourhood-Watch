@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "neighborhood_watch";
+$dbname = "neighbourhood_watch";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 

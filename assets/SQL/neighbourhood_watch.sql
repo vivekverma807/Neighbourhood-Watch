@@ -12,7 +12,8 @@ CREATE TABLE users (
     city VARCHAR(100) NOT NULL,
     state VARCHAR(100) NOT NULL,
     username VARCHAR(12) UNIQUE NOT NULL,
-    password VARCHAR(8) NOT NULL
+    password VARCHAR(8) NOT NULL,
+    profile_image VARCHAR(255)
 );
 
 -- Login Table

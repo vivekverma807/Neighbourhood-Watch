@@ -31,28 +31,62 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    // Insert user into users table
-    $sql = "INSERT INTO users (fullname, email, date_of_birth, phone_number, city, state, username, password) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssssssss", $fullname, $email, $date_of_birth, $phone_number, $city, $state, $username, $password);
+    // Handle file upload
+    $profile_image_path = "";
+    if (isset($_FILES['profile_image']) && $_FILES['profile_image']['error'] == UPLOAD_ERR_OK) {
+        $upload_dir = '../profile-image/';
+        if (!file_exists($upload_dir)) {
+            mkdir($upload_dir, 0777, true);
+        }
 
-    if ($stmt->execute()) {
-        // Get the last inserted user_id
-        $user_id = $conn->insert_id;
+        $file_ext = pathinfo($_FILES['profile_image']['name'], PATHINFO_EXTENSION);
+        $allowed_ext = ['jpg', 'jpeg', 'png', 'gif'];
 
-        // Insert into login table (assuming this table exists)
-        $sql_login = "INSERT INTO login (user_id, username, password) VALUES (?, ?, ?)";
-        $stmt_login = $conn->prepare($sql_login);
-        $stmt_login->bind_param("iss", $user_id, $username, $password);
+        if (in_array(strtolower($file_ext), $allowed_ext)) {
+            // Temporarily insert user to get the user_id
+            $sql = "INSERT INTO users (fullname, email, date_of_birth, phone_number, city, state, username, password) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("ssssssss", $fullname, $email, $date_of_birth, $phone_number, $city, $state, $username, $password);
 
-        if ($stmt_login->execute()) {
-            echo "<script>alert('Registration successful! Please login.'); window.location.href='../HTML/login.html';</script>";
+            if ($stmt->execute()) {
+                $user_id = $conn->insert_id;
+                $new_filename = "user_" . $user_id . "." . $file_ext;
+                $destination = $upload_dir . $new_filename;
+
+                if (move_uploaded_file($_FILES['profile_image']['tmp_name'], $destination)) {
+                    // Update the user record with the profile image path
+                    $update_sql = "UPDATE users SET profile_image = ? WHERE user_id = ?";
+                    $update_stmt = $conn->prepare($update_sql);
+                    $profile_image_path = $destination;
+                    $update_stmt->bind_param("si", $profile_image_path, $user_id);
+                    $update_stmt->execute();
+                    $update_stmt->close();
+                } else {
+                    echo "<script>alert('Error uploading profile image!'); window.location.href='../HTML/sign-up.html';</script>";
+                    exit;
+                }
+
+                // Insert into login table (assuming this table exists)
+                $sql_login = "INSERT INTO login (user_id, username, password) VALUES (?, ?, ?)";
+                $stmt_login = $conn->prepare($sql_login);
+                $stmt_login->bind_param("iss", $user_id, $username, $password);
+
+                if ($stmt_login->execute()) {
+                    echo "<script>alert('Registration successful! Please login.'); window.location.href='../HTML/login.html';</script>";
+                } else {
+                    echo "<script>alert('Error inserting into login table!'); window.location.href='../HTML/sign-up.html';</script>";
+                }
+            } else {
+                echo "<script>alert('Error inserting into users table!'); window.location.href='../HTML/sign-up.html';</script>";
+            }
         } else {
-            echo "<script>alert('Error inserting into login table!'); window.location.href='../HTML/sign-up.html';</script>";
+            echo "<script>alert('Invalid file type. Only JPG, JPEG, PNG, and GIF are allowed.'); window.location.href='../HTML/sign-up.html';</script>";
+            exit;
         }
     } else {
-        echo "<script>alert('Error inserting into users table!'); window.location.href='../HTML/sign-up.html';</script>";
+        echo "<script>alert('Error uploading profile image!'); window.location.href='../HTML/sign-up.html';</script>";
+        exit;
     }
 
     // Close statements & connection
