@@ -16,7 +16,7 @@
 
     <!-- Profile Picture -->
     <div class="profile-picture">
-        <img id="profile-img" src="../../profile-image/default.png" alt="Profile Picture">
+        <img id="profile-img" src="../profile-image/default.png" alt="Profile Picture">
         <input type="file" id="upload-img" accept="image/*">
     </div>
 
