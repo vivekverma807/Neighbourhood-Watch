@@ -8,71 +8,17 @@
         <link rel="stylesheet" href="../CSS/main.css">
         <link rel="stylesheet" href="../CSS/map.css">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-        <style>
-            .incident-popup {
-                max-width: 400px; /* Increased width */
-                display: flex; /* Flex layout for side-by-side content */
-                gap: 15px; /* Space between text and image */
-            }
-            .incident-text {
-                flex: 1; /* Takes available space */
-                min-width: 0; /* Prevents overflow */
-            }
-            .incident-image {
-                flex: 1; /* Takes available space */
-                max-width: 150px; /* Limit image width */
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-            }
-            .incident-popup h3 {
-                margin-top: 0;
-                color: #2c3e50;
-            }
-            .incident-popup img {
-                max-width: 100%;
-                height: auto;
-                border-radius: 4px;
-            }
-            .incident-detail {
-                margin: 8px 0;
-            }
-            .detail-label {
-                font-weight: bold;
-                color: #2c3e50;
-            }
-            /* Back button styles */
-            .back-button {
-                position: absolute;
-                top: 15px;
-                left: 15px;
-                z-index: 1000;
-                background: rgb(254, 254, 254);
-                width: 40px;
-                height: 40px;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                box-shadow: 0 0 10px rgba(0,0,0,0.2);
-                cursor: pointer;
-            }
-            .back-button:hover {
-                background: #f0f0f0;
-            }
-        </style>
     </head>
     <body>
-        <!-- Header -->
+        <!-- Header with centered logo and left-aligned back button -->
         <header id="header">
-            <a href="./homepage.html" class="logo">Neighbourhood Watch</a>
-
-            <!-- Back Button -->
-            <div class="back-button" onclick="window.location.href='./homepage.html'">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2c3e50" stroke-width="2">
+            <button class="back-button" onclick="window.location.href='./homepage.html'">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#2c3e50" stroke-width="2">
                     <path d="M19 12H5M12 19l-7-7 7-7"/>
                 </svg>
-            </div>
+            </button>
+            
+            <a href="./homepage.html" class="logo">Neighbourhood Watch</a>
         </header>
 
         <!-- Map Container -->
@@ -83,119 +29,6 @@
         <!-- Scripts -->
         <script src="../JS/jquery.min.js"></script>
         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                // Initialize the map
-                const map = L.map('map').setView([51.505, -0.09], 13);
-                
-                // Add tile layer
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                }).addTo(map);
-
-                // Function to create detailed popup content
-                function createPopupContent(incident) {
-                    let textContent = `
-                        <div class="incident-text">
-                            <h3>${incident.title}</h3>
-                            <div class="incident-detail">
-                                <span class="detail-label">Type:</span> ${incident.type}
-                            </div>
-                            <div class="incident-detail">
-                                <span class="detail-label">Date:</span> ${incident.date}
-                            </div>
-                            <div class="incident-detail">
-                                <span class="detail-label">Time:</span> ${incident.time}
-                            </div>
-                            <div class="incident-detail">
-                                <span class="detail-label">Location:</span> ${incident.address}
-                            </div>`;
-                    
-                    // Add contact info if available
-                    if (incident.contact_info) {
-                        textContent += `
-                            <div class="incident-detail">
-                                <span class="detail-label">Contact:</span> ${incident.contact_info}
-                            </div>`;
-                    }
-                    
-                    textContent += `
-                            <div class="incident-detail">
-                                <span class="detail-label">Description:</span> 
-                                <p>${incident.description}</p>
-                            </div>
-                        </div>`;
-                    
-                    // Add evidence image if available
-                    let imageContent = '';
-                    if (incident.evidence_url) {
-                        const fileExt = incident.evidence_url.split('.').pop().toLowerCase();
-                        const isImage = ['jpg', 'jpeg', 'png', 'gif'].includes(fileExt);
-                        
-                        if (isImage) {
-                            imageContent = `
-                            <div class="incident-image">
-                                <img src="${incident.evidence_url}" alt="Incident Evidence">
-                            </div>`;
-                        } else {
-                            imageContent = `
-                            <div class="incident-image">
-                                <a href="${incident.evidence_url}" target="_blank">View attached file</a>
-                            </div>`;
-                        }
-                    } else {
-                        imageContent = '<div class="incident-image"></div>';
-                    }
-                    
-                    return `<div class="incident-popup">${textContent}${imageContent}</div>`;
-                }
-
-                // Function to fetch and display incidents
-                function loadIncidents() {
-                    fetch('../PHP/map-data.php')
-                        .then(response => response.json())
-                        .then(incidents => {
-                            // Clear existing markers if any
-                            if (window.incidentMarkers) {
-                                window.incidentMarkers.forEach(marker => map.removeLayer(marker));
-                            }
-                            
-                            window.incidentMarkers = [];
-                            
-                            // Add markers for each incident
-                            incidents.forEach(incident => {
-                                if (incident.lat && incident.lng) {
-                                    const marker = L.marker([incident.lat, incident.lng]).addTo(map);
-                                    marker.bindPopup(createPopupContent(incident), {
-                                        maxWidth: 500, // Increased width for better layout
-                                        minWidth: 400  // Minimum width to ensure good layout
-                                    });
-                                    window.incidentMarkers.push(marker);
-                                }
-                            });
-                            
-                            // Auto-fit map to show all markers if there are any
-                            if (incidents.length > 0 && window.incidentMarkers.length > 0) {
-                                const group = new L.featureGroup(window.incidentMarkers);
-                                map.fitBounds(group.getBounds().pad(0.1));
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error loading incidents:', error);
-                            // Show error on map
-                            L.popup()
-                                .setLatLng(map.getCenter())
-                                .setContent('Failed to load incident data. Please try again later.')
-                                .openOn(map);
-                        });
-                }
-
-                // Load incidents initially
-                loadIncidents();
-                
-                // Refresh incidents every 5 minutes
-                setInterval(loadIncidents, 300000);
-            });
-        </script>
+        <script src="../JS/map.js"></script>
     </body>
 </html>
