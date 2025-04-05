@@ -2,178 +2,199 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" href="../images/neighbourhood-watch.png" type="image/x-icon">
         <title>Community Map - Neighbourhood Watch</title>
         <link rel="stylesheet" href="../CSS/main.css">
         <link rel="stylesheet" href="../CSS/map.css">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-
+        <style>
+            .incident-popup {
+                max-width: 400px; /* Increased width */
+                display: flex; /* Flex layout for side-by-side content */
+                gap: 15px; /* Space between text and image */
+            }
+            .incident-text {
+                flex: 1; /* Takes available space */
+                min-width: 0; /* Prevents overflow */
+            }
+            .incident-image {
+                flex: 1; /* Takes available space */
+                max-width: 150px; /* Limit image width */
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            .incident-popup h3 {
+                margin-top: 0;
+                color: #2c3e50;
+            }
+            .incident-popup img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 4px;
+            }
+            .incident-detail {
+                margin: 8px 0;
+            }
+            .detail-label {
+                font-weight: bold;
+                color: #2c3e50;
+            }
+            /* Back button styles */
+            .back-button {
+                position: absolute;
+                top: 15px;
+                left: 15px;
+                z-index: 1000;
+                background: rgb(254, 254, 254);
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 0 10px rgba(0,0,0,0.2);
+                cursor: pointer;
+            }
+            .back-button:hover {
+                background: #f0f0f0;
+            }
+        </style>
     </head>
     <body>
-
         <!-- Header -->
         <header id="header">
-            <nav class="left">
-                <a href="#menu"><span>Menu</span></a>
-            </nav>
-            <a href="index.html" class="logo">Neighbourhood Watch</a>
-            <!-- <nav class="right">
-                <a href="../HTML/login.html" class="button alt">Log in</a>
-            </nav> -->
+            <a href="./homepage.html" class="logo">Neighbourhood Watch</a>
+
+            <!-- Back Button -->
+            <div class="back-button" onclick="window.location.href='./homepage.html'">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2c3e50" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+            </div>
         </header>
 
         <!-- Map Container -->
         <div id="map-container">
             <div id="map"></div>
-            
-            <!-- Map Controls Panel -->
-            <!-- <div class="map-controls">
-                <h3>Incident Filters</h3>
-                <div class="incident-filter">
-                    <div class="filter-option">
-                        <input type="checkbox" id="filter-theft" checked>
-                        <label for="filter-theft">Theft/Burglary</label>
-                    </div>
-                    <div class="filter-option">
-                        <input type="checkbox" id="filter-vandalism" checked>
-                        <label for="filter-vandalism">Vandalism</label>
-                    </div>
-                    <div class="filter-option">
-                        <input type="checkbox" id="filter-suspicious" checked>
-                        <label for="filter-suspicious">Suspicious Activity</label>
-                    </div>
-                    <div class="filter-option">
-                        <input type="checkbox" id="filter-traffic" checked>
-                        <label for="filter-traffic">Traffic Incidents</label>
-                    </div>
-                    <div class="filter-option">
-                        <input type="checkbox" id="filter-other" checked>
-                        <label for="filter-other">Other Incidents</label>
-                    </div>
-                </div>
-                
-                <div class="map-legend">
-                    <h4>Legend</h4>
-                    <div class="legend-item">
-                        <div class="legend-color" style="background-color: #e74c3c;"></div>
-                        <span>Emergency</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color" style="background-color: #f39c12;"></div>
-                        <span>Warning</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color" style="background-color: #3498db;"></div>
-                        <span>Information</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color" style="background-color: #2ecc71;"></div>
-                        <span>Resolved</span>
-                    </div>
-                </div>
-            </div> -->
         </div>
 
         <!-- Scripts -->
         <script src="../JS/jquery.min.js"></script>
-        <script src="../JS/jquery.scrolly.min.js"></script>
-        <script src="../JS/skel.min.js"></script>
-        <script src="../JS/util.js"></script>
-        <script src="../JS/main.js"></script>
         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-        <!-- In the scripts section of map.html, replace the existing script with: -->
-        <script src="../JS/map.js"></script>
-        
         <script>
-            // Initialize the map
             document.addEventListener('DOMContentLoaded', function() {
-                // Default coordinates (center of the map)
-                const defaultLat = 51.505;
-                const defaultLng = -0.09;
+                // Initialize the map
+                const map = L.map('map').setView([51.505, -0.09], 13);
                 
-                // Create map instance
-                const map = L.map('map').setView([defaultLat, defaultLng], 13);
-                
-                // Add tile layer (OpenStreetMap)
+                // Add tile layer
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 }).addTo(map);
-                
-                // Sample incident markers (replace with real data from your backend)
-                const incidents = [
-                    {
-                        lat: 51.505,
-                        lng: -0.09,
-                        title: "Suspicious vehicle",
-                        type: "suspicious",
-                        status: "warning",
-                        description: "White van circling the neighborhood for past hour"
-                    },
-                    {
-                        lat: 51.51,
-                        lng: -0.1,
-                        title: "Bicycle theft",
-                        type: "theft",
-                        status: "emergency",
-                        description: "Bike stolen from front yard between 2-4pm"
-                    },
-                    {
-                        lat: 51.515,
-                        lng: -0.08,
-                        title: "Graffiti",
-                        type: "vandalism",
-                        status: "information",
-                        description: "New graffiti on park walls"
-                    }
-                ];
-                
-                // Icon colors based on status
-                const iconColors = {
-                    emergency: 'red',
-                    warning: 'orange',
-                    information: 'blue',
-                    resolved: 'green'
-                };
-                
-                // Create custom icons
-                function getIcon(status) {
-                    return L.divIcon({
-                        className: 'custom-icon',
-                        html: `<div style="background-color: ${iconColors[status]}; 
-                               width: 20px; 
-                               height: 20px; 
-                               border-radius: 50%; 
-                               border: 2px solid white;
-                               box-shadow: 0 0 5px rgba(0,0,0,0.3);"></div>`,
-                        iconSize: [24, 24],
-                        iconAnchor: [12, 12]
-                    });
-                }
-                
-                // Add incident markers to map
-                incidents.forEach(incident => {
-                    const marker = L.marker([incident.lat, incident.lng], {
-                        icon: getIcon(incident.status)
-                    }).addTo(map);
+
+                // Function to create detailed popup content
+                function createPopupContent(incident) {
+                    let textContent = `
+                        <div class="incident-text">
+                            <h3>${incident.title}</h3>
+                            <div class="incident-detail">
+                                <span class="detail-label">Type:</span> ${incident.type}
+                            </div>
+                            <div class="incident-detail">
+                                <span class="detail-label">Date:</span> ${incident.date}
+                            </div>
+                            <div class="incident-detail">
+                                <span class="detail-label">Time:</span> ${incident.time}
+                            </div>
+                            <div class="incident-detail">
+                                <span class="detail-label">Location:</span> ${incident.address}
+                            </div>`;
                     
-                    marker.bindPopup(`
-                        <h3>${incident.title}</h3>
-                        <p><strong>Type:</strong> ${incident.type}</p>
-                        <p>${incident.description}</p>
-                        <small>Reported: Today</small>
-                    `);
-                });
+                    // Add contact info if available
+                    if (incident.contact_info) {
+                        textContent += `
+                            <div class="incident-detail">
+                                <span class="detail-label">Contact:</span> ${incident.contact_info}
+                            </div>`;
+                    }
+                    
+                    textContent += `
+                            <div class="incident-detail">
+                                <span class="detail-label">Description:</span> 
+                                <p>${incident.description}</p>
+                            </div>
+                        </div>`;
+                    
+                    // Add evidence image if available
+                    let imageContent = '';
+                    if (incident.evidence_url) {
+                        const fileExt = incident.evidence_url.split('.').pop().toLowerCase();
+                        const isImage = ['jpg', 'jpeg', 'png', 'gif'].includes(fileExt);
+                        
+                        if (isImage) {
+                            imageContent = `
+                            <div class="incident-image">
+                                <img src="${incident.evidence_url}" alt="Incident Evidence">
+                            </div>`;
+                        } else {
+                            imageContent = `
+                            <div class="incident-image">
+                                <a href="${incident.evidence_url}" target="_blank">View attached file</a>
+                            </div>`;
+                        }
+                    } else {
+                        imageContent = '<div class="incident-image"></div>';
+                    }
+                    
+                    return `<div class="incident-popup">${textContent}${imageContent}</div>`;
+                }
+
+                // Function to fetch and display incidents
+                function loadIncidents() {
+                    fetch('../PHP/map-data.php')
+                        .then(response => response.json())
+                        .then(incidents => {
+                            // Clear existing markers if any
+                            if (window.incidentMarkers) {
+                                window.incidentMarkers.forEach(marker => map.removeLayer(marker));
+                            }
+                            
+                            window.incidentMarkers = [];
+                            
+                            // Add markers for each incident
+                            incidents.forEach(incident => {
+                                if (incident.lat && incident.lng) {
+                                    const marker = L.marker([incident.lat, incident.lng]).addTo(map);
+                                    marker.bindPopup(createPopupContent(incident), {
+                                        maxWidth: 500, // Increased width for better layout
+                                        minWidth: 400  // Minimum width to ensure good layout
+                                    });
+                                    window.incidentMarkers.push(marker);
+                                }
+                            });
+                            
+                            // Auto-fit map to show all markers if there are any
+                            if (incidents.length > 0 && window.incidentMarkers.length > 0) {
+                                const group = new L.featureGroup(window.incidentMarkers);
+                                map.fitBounds(group.getBounds().pad(0.1));
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error loading incidents:', error);
+                            // Show error on map
+                            L.popup()
+                                .setLatLng(map.getCenter())
+                                .setContent('Failed to load incident data. Please try again later.')
+                                .openOn(map);
+                        });
+                }
+
+                // Load incidents initially
+                loadIncidents();
                 
-                // Add filter functionality
-                document.querySelectorAll('.incident-filter input').forEach(checkbox => {
-                    checkbox.addEventListener('change', function() {
-                        // Implement filter logic here
-                        console.log(`Filter ${this.id} changed to ${this.checked}`);
-                        // You would typically loop through markers and show/hide based on filters
-                    });
-                });
+                // Refresh incidents every 5 minutes
+                setInterval(loadIncidents, 300000);
             });
         </script>
     </body>

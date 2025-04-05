@@ -51,7 +51,7 @@
                     <p>If this is an immediate life-threatening emergency, please call your local emergency number first.</p>
                 </div>
 
-                <form id="incident-form" class="form-card" action="../PHP/incident-process.php" method="POST">
+                <form id="incident-form" class="form-card" action="../PHP/incident-process.php" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="title">Incident Title*</label>
                         <input type="text" id="title" name="title" placeholder="Brief description of the incident" required>
@@ -142,6 +142,7 @@
     <script src="../JS/util.js"></script>
     <script src="../JS/main.js"></script>
     <script src="../JS/script.js"></script>
+    <script src="../JS/report-incident.js"></script>
 
 </body>
 </html>

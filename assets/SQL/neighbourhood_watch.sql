@@ -26,22 +26,17 @@ CREATE TABLE login (
 );
 
 CREATE TABLE IF NOT EXISTS incidents (
-    incident_id INT AUTO_INCREMENT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
-    type VARCHAR(50) NOT NULL COMMENT 'Incident category like theft, vandalism etc.',
+    type VARCHAR(100) NOT NULL,
     description TEXT NOT NULL,
     address TEXT NOT NULL,
-    latitude DECIMAL(10, 8) COMMENT 'GPS latitude coordinate',
-    longitude DECIMAL(11, 8) COMMENT 'GPS longitude coordinate',
-    evidence_path VARCHAR(255) COMMENT 'Path to uploaded evidence file',
-    contact_info VARCHAR(255) COMMENT 'Reporter contact information',
-    status VARCHAR(20) DEFAULT 'reported' COMMENT 'Incident status',
-    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- Add indexes for better performance
-ALTER TABLE incidents ADD INDEX idx_status (status);
-ALTER TABLE incidents ADD INDEX idx_type (type);
-ALTER TABLE incidents ADD INDEX idx_timestamp (timestamp);
+    latitude DECIMAL(10, 8),
+    longitude DECIMAL(11, 8),
+    evidence_path VARCHAR(255),
+    contact_info VARCHAR(255),
+    incident_date DATE NOT NULL,
+    incident_time TIME NOT NULL,
+    status VARCHAR(50) DEFAULT 'reported',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
