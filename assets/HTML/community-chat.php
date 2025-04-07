@@ -188,7 +188,7 @@ if (!isset($_SESSION['user_id'])) {
                 name: 'Community Bot', 
                 avatar: '../profile-image/bot.png' 
             };
-            displayMessage(botUser, `Welcome to the community chat, ${currentUser.name}! Please keep discussions respectful and relevant to neighborhood safety.`);
+            displayMessage(botUser, `Welcome to the community chat, <strong><u>${currentUser.name}</u></strong>! Please keep discussions respectful and relevant to neighborhood safety.`);
         });
     </script>
 </body>

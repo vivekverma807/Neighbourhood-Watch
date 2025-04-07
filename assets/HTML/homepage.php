@@ -44,7 +44,7 @@ if (!isset($_SESSION['user_id'])) {
      <!-- Navigation Menu -->
      <nav id="menu">
         <ul class="links">
-            <li><a href="./homepage.html">Home</a></li>
+            <li><a href="./homepage.php">Home</a></li>
 			<li><a href="./map.html">Map</a></li>
 			<li><a href="./report-incident.html">Report Incident</a></li>
 			<li><a href="./emergency-pin.html">Emergency Pin</a></li>
