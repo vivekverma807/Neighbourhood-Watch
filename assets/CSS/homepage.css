@@ -76,3 +76,103 @@
     font-style: italic;
     color: #666;
 }
+
+        /* Additional Styles for Enhanced Content */
+        .testimonials-container {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .testimonials-container figure {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1rem;
+            float: left;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .stat-item {
+            padding: 2rem;
+            background: rgba(255,255,255,0.9);
+            border-radius: 8px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #004d40;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+        }
+        
+        .steps {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: #004d40;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+        
+        .button.small {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+        
+        #how-it-works {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+        
+        #stats {
+            padding: 4rem 0;
+            background: linear-gradient(rgba(0,77,64,0.8), rgba(0,77,64,0.8)), url('../images/neighborhood-bg.jpg');
+            background-size: cover;
+            color: white;
+        }
