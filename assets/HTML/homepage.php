@@ -48,7 +48,7 @@ if (!isset($_SESSION['user_id'])) {
 			<li><a href="./map.html">Map</a></li>
 			<li><a href="./report-incident.html">Report Incident</a></li>
 			<li><a href="./emergency-pin.html">Emergency Pin</a></li>
-			<li><a href="./community-chat.html">Community Chat</a></li>
+			<li><a href="./community-chat.php">Community Chat</a></li>
 			<li><a href="./about.html">About</a></li>
 			<li><a href="./contact.html">Contact Us</a></li>
         </ul>
