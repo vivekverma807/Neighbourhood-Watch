@@ -215,9 +215,9 @@ if (!isset($_SESSION['user_id'])) {
         <div class="inner">
             <h2>Contact Us</h2>
             <ul class="actions">
-                <li><span class="icon fa-phone"></span> <a href="#">(000) 000-0000</a></li>
-                <li><span class="icon fa-envelope"></span> <a href="#">information@untitled.tld</a></li>
-                <li><span class="icon fa-map-marker"></span> 123 Somewhere Road, Nashville, TN 00000</li>
+                <li><span class="icon fa-phone"></span> <a href="#">+91 90000-90000</a></li>
+                <li><span class="icon fa-envelope"></span> <a href="#">neighborhoodwatch@gmail.com</a></li>
+                <li><span class="icon fa-map-marker"></span> GLA University, Mathura, Uttar Pradesh 281406</li>
             </ul>
         </div>
     </footer>
