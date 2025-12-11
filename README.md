@@ -1,4 +1,4 @@
-# 🏘️ Neighbourhood Watch System
+# 🏘️ Neighbourhood Watch
 
 ## Description
 
